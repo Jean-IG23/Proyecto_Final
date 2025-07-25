@@ -600,7 +600,38 @@ WHERE provincia IN (
 UPDATE ot_2026.localizacion SET region = 'Insular'
 WHERE provincia = 'galápagos';
 
--- 
+-- Actualización de IDs Foráneos de Ofertas Laborales --
+SELECT COUNT(*) AS filas
+FROM ot_2025.oferta_laboral_ecuador o
+JOIN ot_2025.localizacion l
+ON o.ciudad = l.ciudad AND
+o.canton = l.canton AND
+o.provincia = l.provincia
+WHERE o.id_localizacion IS NULL;
+
+UPDATE ot_2025.oferta_laboral_ecuador o
+JOIN ot_2025.localizacion l
+ON o.ciudad = l.ciudad AND
+o.canton = l.canton AND
+o.provincia = l.provincia
+SET o.id_localizacion = l.id
+WHERE o.id_localizacion IS NULL;
+
+SELECT COUNT(*) AS filas
+FROM ot_2025.oferta_laboral_ecuador o
+JOIN ot_2025.requisitos r
+ON o.nivelInstruccion = r.nivelInstruccion AND
+o.areaEstudios = r.areaEstudios AND
+o.experiencia = r.experiencia
+WHERE o.id_requisito IS NULL;
+
+UPDATE ot_2025.oferta_laboral_ecuador o
+JOIN ot_2025.requisitos r
+ON o.nivelInstruccion = r.nivelInstruccion AND
+o.areaEstudios = r.areaEstudios AND
+o.experiencia = r.experiencia
+SET o.id_requisito = r.id
+WHERE o.id_requisito IS NULL;
 
 
 
