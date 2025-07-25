@@ -1,0 +1,1387 @@
+﻿{
+  "paragraphs": [
+    {
+      "text": "%md\n# Carga de DataFrame oferta_laboral_ecuador",
+      "user": "anonymous",
+      "dateUpdated": "2025-07-25T12:16:16-0500",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<h1>Carga de DataFrame oferta_laboral_ecuador</h1>\n\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1753463776702_1708046941",
+      "id": "paragraph_1753197354359_1953778422",
+      "dateCreated": "2025-07-25T12:16:16-0500",
+      "status": "READY",
+      "focus": true,
+      "$$hashKey": "object:2674"
+    },
+    {
+      "text": "%spark\n\nval url = \"jdbc:mysql://localhost:3306/ot_2025\"\nval table = \"(SELECT * from oferta_laboral_ecuador) AS subconsulta\"\nval propiedades = new java.util.Properties()\npropiedades.setProperty(\"user\", \"root\")\npropiedades.setProperty(\"password\", \"abeja\")\npropiedades.setProperty(\"driver\", \"com.mysql.cj.jdbc.Driver\")\n\nval df = spark.read.jdbc(url, table, propiedades)\n\ndf.show(false)",
+      "user": "anonymous",
+      "dateUpdated": "2025-07-25T12:26:10-0500",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-----------------+-------------------------------------------+---------------+--------------+----------+------+------------+---------------------------+------------+----+----+-----------------------+\n|id_oferta_laboral|cargo                                      |modo           |fechaPublicado|fechaFin  |plazas|capacitacion|jornadas                   |remuneracion|idRe|idLo|tipo_contrato          |\n+-----------------+-------------------------------------------+---------------+--------------+----------+------+------------+---------------------------+------------+----+----+-----------------------+\n|1                |desarrollador java jee                     |tiempo completo|2013-02-22    |2013-03-24|1     |0-50 horas  |jornada ordinaria (8 horas)|$501-$750   |1398|1   |Indefinido             |\n|2                |guardias de seguridad con experiencia 1 año|tiempo completo|2013-02-23    |2013-02-28|20    |0-50 horas  |jornada ordinaria (8 horas)|$400-$500   |330 |2   |Indefinido             |\n|3                |vendedor                                   |tiempo completo|2013-02-23    |2013-02-26|2     |0-50 horas  |jornada ordinaria (8 horas)|$400-$500   |352 |3   |Indefinido             |\n|4                |topografo                                  |por obra       |2013-02-23    |2013-02-28|1     |0-50 horas  |jornada ordinaria (8 horas)|$501-$750   |895 |4   |Servicios Profesionales|\n|5                |asistente contable                         |tiempo completo|2013-02-25    |2013-03-27|1     |0-50 horas  |jornada ordinaria (8 horas)|$400-$500   |1262|3   |Indefinido             |\n|6                |asistente contable                         |tiempo completo|2013-02-25    |2013-02-26|1     |0-50 horas  |jornada ordinaria (8 horas)|$400-$500   |1262|3   |Indefinido             |\n|7                |mensajero                                  |tiempo completo|2013-02-25    |2013-02-26|1     |0-50 horas  |jornada ordinaria (8 horas)|$400-$500   |1   |3   |Indefinido             |\n|8                |guardias de seguridad                      |tiempo completo|2013-02-25    |2013-02-26|1     |0-50 horas  |jornada ordinaria (8 horas)|$400-$500   |52  |1   |Indefinido             |\n|9                |recepcion                                  |tiempo completo|2013-02-26    |2013-03-28|1     |0-50 horas  |jornada ordinaria (8 horas)|$400-$500   |1   |1   |Indefinido             |\n|10               |guias turisticas                           |tiempo completo|2013-02-26    |2013-03-01|2     |0-50 horas  |jornada ordinaria (8 horas)|$501-$750   |1377|2   |Indefinido             |\n|11               |supervisor de promotoria con experiencia   |tiempo completo|2013-02-26    |2013-02-28|2     |0-50 horas  |jornada ordinaria (8 horas)|$400-$500   |1426|3   |Indefinido             |\n|12               |analista comercio exterior                 |tiempo completo|2014-05-29    |2014-05-30|1     |0-50 horas  |jornada ordinaria (8 horas)|$501-$750   |1185|3   |Indefinido             |\n|13               |jefe de taller mecanico                    |tiempo completo|2014-05-29    |2014-05-31|1     |0-50 horas  |jornada ordinaria (8 horas)|$501-$750   |990 |1   |Indefinido             |\n|14               |tecnica/o en seguridad y salud ocupacional |tiempo parcial |2014-05-29    |2014-06-16|1     |0-50 horas  |medio tiempo               |$1001-$1500 |85  |1   |Temporal               |\n|15               |cajero                                     |tiempo completo|2017-02-24    |2017-02-27|1     |0-50 horas  |jornada ordinaria (8 horas)|$400-$500   |546 |5   |Indefinido             |\n|16               |mesero (hombre)                            |tiempo completo|2014-05-29    |2014-06-28|1     |0-50 horas  |jornada ordinaria (8 horas)|$400-$500   |462 |6   |Indefinido             |\n|17               |canillita (venta de periodico)             |tiempo completo|2014-05-29    |2014-06-28|1     |0-50 horas  |jornada ordinaria (8 horas)|$400-$500   |624 |6   |Indefinido             |\n|18               |director comercial                         |tiempo completo|2013-02-26    |2013-03-01|1     |0-50 horas  |jornada ordinaria (8 horas)|$400-$500   |1426|3   |Indefinido             |\n|19               |tecnico taller movil                       |tiempo completo|2017-02-24    |2017-03-26|1     |0-50 horas  |jornada ordinaria (8 horas)|$751-$1000  |986 |1   |Indefinido             |\n|20               |tecnico en computadoras                    |tiempo completo|2014-05-29    |2014-06-03|1     |0-50 horas  |jornada ordinaria (8 horas)|$400-$500   |1355|7   |Indefinido             |\n+-----------------+-------------------------------------------+---------------+--------------+----------+------+------------+---------------------------+------------+----+----+-----------------------+\nonly showing top 20 rows\n\n\u001b[1m\u001b[34murl\u001b[0m: \u001b[1m\u001b[32mString\u001b[0m = jdbc:mysql://localhost:3306/ot_2025\n\u001b[1m\u001b[34mtable\u001b[0m: \u001b[1m\u001b[32mString\u001b[0m = (SELECT * from oferta_laboral_ecuador) AS subconsulta\n\u001b[1m\u001b[34mpropiedades\u001b[0m: \u001b[1m\u001b[32mjava.util.Properties\u001b[0m = {password=abeja, driver=com.mysql.cj.jdbc.Driver, user=root}\n\u001b[1m\u001b[34mdf\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [id_oferta_laboral: int, cargo: string ... 10 more fields]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://192.168.1.10:4040/jobs/job?id=13",
+              "$$hashKey": "object:7286"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1753463776705_491894816",
+      "id": "paragraph_1753197408399_1875035786",
+      "dateCreated": "2025-07-25T12:16:16-0500",
+      "status": "FINISHED",
+      "$$hashKey": "object:2675",
+      "dateFinished": "2025-07-25T12:26:11-0500",
+      "dateStarted": "2025-07-25T12:26:10-0500"
+    },
+    {
+      "text": "df.printSchema",
+      "user": "anonymous",
+      "dateUpdated": "2025-07-25T12:26:18-0500",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "root\n |-- id_oferta_laboral: integer (nullable = true)\n |-- cargo: string (nullable = true)\n |-- modo: string (nullable = true)\n |-- fechaPublicado: string (nullable = true)\n |-- fechaFin: string (nullable = true)\n |-- plazas: integer (nullable = true)\n |-- capacitacion: string (nullable = true)\n |-- jornadas: string (nullable = true)\n |-- remuneracion: string (nullable = true)\n |-- idRe: integer (nullable = true)\n |-- idLo: integer (nullable = true)\n |-- tipo_contrato: string (nullable = true)\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1753463776705_584848771",
+      "id": "paragraph_1753208033975_7292071",
+      "dateCreated": "2025-07-25T12:16:16-0500",
+      "status": "FINISHED",
+      "$$hashKey": "object:2676",
+      "dateFinished": "2025-07-25T12:26:18-0500",
+      "dateStarted": "2025-07-25T12:26:18-0500"
+    },
+    {
+      "text": "%md\n# Carga de DataFrame Requisitos",
+      "user": "anonymous",
+      "dateUpdated": "2025-07-25T12:23:54-0500",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<h1>Carga de DataFrame Requisitos</h1>\n\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1753463776706_43609294",
+      "id": "paragraph_1753197437300_1512551800",
+      "dateCreated": "2025-07-25T12:16:16-0500",
+      "status": "FINISHED",
+      "$$hashKey": "object:2677",
+      "dateFinished": "2025-07-25T12:23:57-0500",
+      "dateStarted": "2025-07-25T12:23:54-0500"
+    },
+    {
+      "text": "val tablaRequisitos = \"(SELECT * FROM requisitos) AS sub_requisitos\"\nval dfRequisitos = spark.read.jdbc(url, tablaRequisitos, propiedades)\n\ndfRequisitos.show()\n",
+      "user": "anonymous",
+      "dateUpdated": "2025-07-25T12:24:00-0500",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "editorHide": false,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+---+----------------+--------------------+-------------------+-------------------+\n| id|nivelInstruccion|        areaEstudios|        experiencia|nivel_rigor_tecnico|\n+---+----------------+--------------------+-------------------+-------------------+\n|  1|       bachiller|administración/of...|           1-3 años|              Medio|\n|  2|       bachiller|administración/of...|          1-6 meses|              Bajo |\n|  3|       bachiller|administración/of...|           4-6 años|              Medio|\n|  4|       bachiller|administración/of...|          7-10 años|              Alto |\n|  5|       bachiller|administración/of...|         7-12 meses|              Medio|\n|  6|       bachiller|administración/of...|     más de 10 años|              Alto |\n|  7|       bachiller|administración/of...|practica en empresa|              Bajo |\n|  8|       bachiller|administración/of...|    sin experiencia|              Bajo |\n|  9|       bachiller|agricultura/pesca...|           1-3 años|              Medio|\n| 10|       bachiller|agricultura/pesca...|          1-6 meses|              Bajo |\n| 11|       bachiller|agricultura/pesca...|           4-6 años|              Medio|\n| 12|       bachiller|agricultura/pesca...|         7-12 meses|              Medio|\n| 13|       bachiller|agricultura/pesca...|practica en empresa|              Bajo |\n| 14|       bachiller|agricultura/pesca...|    sin experiencia|              Bajo |\n| 15|       bachiller|  arte/diseño/medios|           1-3 años|              Medio|\n| 16|       bachiller|  arte/diseño/medios|          1-6 meses|              Bajo |\n| 17|       bachiller|  arte/diseño/medios|           4-6 años|              Medio|\n| 18|       bachiller|  arte/diseño/medios|          7-10 años|              Alto |\n| 19|       bachiller|  arte/diseño/medios|         7-12 meses|              Medio|\n| 20|       bachiller|  arte/diseño/medios|     más de 10 años|              Alto |\n+---+----------------+--------------------+-------------------+-------------------+\nonly showing top 20 rows\n\n\u001b[1m\u001b[34mtablaRequisitos\u001b[0m: \u001b[1m\u001b[32mString\u001b[0m = (SELECT * FROM requisitos) AS sub_requisitos\n\u001b[1m\u001b[34mdfRequisitos\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [id: int, nivelInstruccion: string ... 3 more fields]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://192.168.1.10:4040/jobs/job?id=1",
+              "$$hashKey": "object:6434"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1753463776706_82363711",
+      "id": "paragraph_1753197705136_1789844209",
+      "dateCreated": "2025-07-25T12:16:16-0500",
+      "status": "FINISHED",
+      "$$hashKey": "object:2678",
+      "dateFinished": "2025-07-25T12:24:01-0500",
+      "dateStarted": "2025-07-25T12:24:00-0500"
+    },
+    {
+      "text": "dfRequisitos.printSchema",
+      "user": "anonymous",
+      "dateUpdated": "2025-07-25T12:24:06-0500",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "root\n |-- id: integer (nullable = true)\n |-- nivelInstruccion: string (nullable = true)\n |-- areaEstudios: string (nullable = true)\n |-- experiencia: string (nullable = true)\n |-- nivel_rigor_tecnico: string (nullable = true)\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1753463776707_1107023306",
+      "id": "paragraph_1753208893029_137653806",
+      "dateCreated": "2025-07-25T12:16:16-0500",
+      "status": "FINISHED",
+      "$$hashKey": "object:2679",
+      "dateFinished": "2025-07-25T12:24:06-0500",
+      "dateStarted": "2025-07-25T12:24:06-0500"
+    },
+    {
+      "text": "%md\n# Carga de DataFrame Localizacion",
+      "user": "anonymous",
+      "dateUpdated": "2025-07-25T12:16:16-0500",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<h1>Carga de DataFrame Localizacion</h1>\n\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1753463776707_1928405317",
+      "id": "paragraph_1753197760935_816919612",
+      "dateCreated": "2025-07-25T12:16:16-0500",
+      "status": "READY",
+      "$$hashKey": "object:2680"
+    },
+    {
+      "text": "val tablaLocalizacion = \"(SELECT * FROM localizacion) AS sub_localizacion\"\nval dfLocalizacion = spark.read.jdbc(url, tablaLocalizacion, propiedades)\n\ndfLocalizacion.show(false)",
+      "user": "anonymous",
+      "dateUpdated": "2025-07-25T12:26:50-0500",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "editorHide": false,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+---+----------------------------+----------------+-----------------------+--------+\n|id |ciudad                      |provincia       |canton                 |region  |\n+---+----------------------------+----------------+-----------------------+--------+\n|1  |quito                       |pichincha       |quito                  |Sierra  |\n|2  |ibarra                      |imbabura        |ibarra                 |Sierra  |\n|3  |guayaquil                   |guayas          |guayaquil              |Costa   |\n|4  |pedro vicente maldonado     |pichincha       |pedro vicente maldonado|Sierra  |\n|5  |portoviejo                  |manabí          |portoviejo             |Costa   |\n|6  |nueva loja                  |sucumbíos       |lago agrio             |Amazonía|\n|7  |puerto francisco de orellana|orellana        |orellana               |Amazonía|\n|8  |sangolquí                   |pichincha       |rumiñahui              |Sierra  |\n|9  |cuenca                      |azuay           |cuenca                 |Sierra  |\n|10 |cayambe                     |pichincha       |cayambe                |Sierra  |\n|11 |loja                        |loja            |loja                   |Sierra  |\n|12 |otavalo                     |imbabura        |otavalo                |Sierra  |\n|13 |espindola                   |loja            |espindola              |Sierra  |\n|14 |esmeraldas                  |esmeraldas      |esmeraldas             |Costa   |\n|15 |machala                     |el oro          |machala                |Costa   |\n|16 |manta                       |manabí          |manta                  |Costa   |\n|17 |azogues                     |cañar           |azogues                |Sierra  |\n|18 |zamora                      |zamora chinchipe|zamora                 |Amazonía|\n|19 |gonzanama                   |loja            |gonzanama              |Sierra  |\n|20 |gonzalo pizarro             |sucumbíos       |gonzalo pizarro        |Amazonía|\n+---+----------------------------+----------------+-----------------------+--------+\nonly showing top 20 rows\n\n\u001b[1m\u001b[34mtablaLocalizacion\u001b[0m: \u001b[1m\u001b[32mString\u001b[0m = (SELECT * FROM localizacion) AS sub_localizacion\n\u001b[1m\u001b[34mdfLocalizacion\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [id: int, ciudad: string ... 3 more fields]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://192.168.1.10:4040/jobs/job?id=14",
+              "$$hashKey": "object:7365"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1753463776707_313685696",
+      "id": "paragraph_1753197873840_1691780605",
+      "dateCreated": "2025-07-25T12:16:16-0500",
+      "status": "FINISHED",
+      "$$hashKey": "object:2681",
+      "dateFinished": "2025-07-25T12:26:50-0500",
+      "dateStarted": "2025-07-25T12:26:50-0500"
+    },
+    {
+      "text": "dfLocalizacion.printSchema",
+      "user": "anonymous",
+      "dateUpdated": "2025-07-25T12:26:54-0500",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "root\n |-- id: integer (nullable = true)\n |-- ciudad: string (nullable = true)\n |-- provincia: string (nullable = true)\n |-- canton: string (nullable = true)\n |-- region: string (nullable = true)\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1753463776708_1712308591",
+      "id": "paragraph_1753208968272_1383011099",
+      "dateCreated": "2025-07-25T12:16:16-0500",
+      "status": "FINISHED",
+      "$$hashKey": "object:2682",
+      "dateFinished": "2025-07-25T12:26:55-0500",
+      "dateStarted": "2025-07-25T12:26:54-0500"
+    },
+    {
+      "text": "%md\n# 1. ¿Qué ciudades tienen el mayor promedio de plazas por oferta para trabajos de jornada ordinaria?",
+      "user": "anonymous",
+      "dateUpdated": "2025-07-25T12:16:16-0500",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<h1>1. ¿Qué ciudades tienen el mayor promedio de plazas por oferta para trabajos de jornada ordinaria?</h1>\n\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1753463776709_2042313405",
+      "id": "paragraph_1753199702878_1223782707",
+      "dateCreated": "2025-07-25T12:16:16-0500",
+      "status": "READY",
+      "$$hashKey": "object:2683"
+    },
+    {
+      "text": "val dfJoin = df.join(dfLocalizacion, df(\"idLo\") === dfLocalizacion(\"id\"))\n\nval dfFiltrado = dfJoin.filter(lower(col(\"jornadas\")) === \"jornada ordinaria (8 horas)\")\n\nval resultado1 = dfFiltrado.groupBy(\"ciudad\")\n  .agg(avg(\"plazas\").alias(\"promedio_plazas\"))\n  .orderBy(desc(\"promedio_plazas\"))\n  \n  z.show(resultado1)\n",
+      "user": "anonymous",
+      "dateUpdated": "2025-07-25T12:27:41-0500",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "editorHide": false,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "multiBarChart",
+              "height": 290.3,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "ciudad": "string",
+                      "promedio_plazas": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "stackedAreaChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "ciudad",
+                  "index": 0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "promedio_plazas",
+                  "index": 1,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "ciudad\tpromedio_plazas\nnaranjal\t11.0\nsanta lucía\t10.0\nel chaco\t8.7289972899729\npalenque\t7.127272727272727\nsevilla de oro\t6.421052631578948\nnobol\t5.333333333333333\npaján\t5.068181818181818\ngonzalo pizarro\t5.0508474576271185\nmontecristi\t4.225806451612903\nmocache\t4.107692307692307\nquijos\t3.9571428571428573\nchone\t3.8646153846153846\nsanta clara\t3.8095238095238093\nchimbo\t3.789473684210526\nlas naves\t3.75\nportoviejo\t3.744225352112676\nbalzar\t3.6666666666666665\nel ángel\t3.523076923076923\nel triunfo\t3.5172413793103448\nvalencia\t3.3125\npucará\t3.2629107981220655\ntena\t3.2526644138289575\njunín\t3.25\nplayas\t3.2150170648464163\npuerto el carmen\t3.134564643799472\nguayzimi\t3.125\narchidona\t3.108974358974359\nhuaquillas\t3.031862745098039\npasaje\t3.004228329809725\nel pangui\t2.9811090798293725\narenillas\t2.975609756097561\nmanta\t2.9623430962343096\narajuno\t2.957345971563981\npalanda\t2.945736434108527\nshushufindi\t2.9365021770682147\npuerto francisco de orellana\t2.9245062749294677\npuerto lópez\t2.92\njaramijo\t2.9065040650406506\ncarlos julio arosemena tola\t2.890909090909091\ncalceta\t2.8645833333333335\ncevallos\t2.8620689655172415\npíllaro\t2.858108108108108\necheandía\t2.8333333333333335\npedro moncayo\t2.8209876543209877\nsanta elena\t2.7987179487179485\nla libertad\t2.7809307604994324\nesmeraldas\t2.777295733911786\naguarico\t2.7703056768558953\nla joya de los sachas\t2.7477960904561134\nguaranda\t2.7423580786026203\ntarapoa\t2.7246376811594204\nbalao\t2.690909090909091\nsan miguel de los bancos\t2.6666666666666665\nel tambo\t2.6333333333333333\nzamora\t2.633273703041145\nchillanes\t2.5913978494623655\nrocafuerte\t2.58974358974359\nnaranjito\t2.5789473684210527\nsanta ana de vuelta larga\t2.5714285714285716\nloreto\t2.5649122807017544\nsucre\t2.546153846153846\njama\t2.5454545454545454\nlatacunga\t2.53980417198808\npiñas\t2.496732026143791\nbiblián\t2.4578313253012047\nguayaquil\t2.456575006806425\ndaule\t2.4545454545454546\nsalinas\t2.369614512471655\nhuamboya\t2.3692307692307693\npuyo\t2.3689792311091473\nel guabo\t2.3684210526315788\nmachala\t2.3342002600780236\nmilagro\t2.324940047961631\nsanto domingo\t2.3230546856179233\nmera\t2.3059701492537314\nambato\t2.274052021309934\ncascales\t2.2648221343873516\nquito\t2.2550104696380497\npedernales\t2.2547169811320753\nnueva loja\t2.245222929936306\nriobamba\t2.234522345223452\nla mana\t2.223684210526316\npaute\t2.221052631578947\npaquisha\t2.2142857142857144\nla troncal\t2.205056179775281\nlogroño\t2.1944444444444446\nsan juan bosco\t2.15\npujilí\t2.144171779141104\nbabahoyo\t2.098434004474273\nrosa zárate\t2.0961538461538463\nazogues\t2.0759358288770056\nzumbi\t2.0742857142857143\nsaquisilí\t2.073529411764706\nyantzaza\t2.0713731574864234\nventanas\t2.0588235294117645\njipijapa\t2.0491803278688523\ncayambe\t2.040586245772266\ncamilo ponce enriquez\t2.0398936170212765\nchaguarpamba\t2.0\nalfredo baquerizo moreno\t1.992537313432836\nsan miguel\t1.98\nduran\t1.9787556904400607\ntosagua\t1.9655172413793103\nguamote\t1.927710843373494\nmacas\t1.9232379623168179\nchambo\t1.9189189189189189\nurcuquí\t1.9025735294117647\npedro carbo\t1.8983050847457628\nsucúa\t1.891304347826087\nbaba\t1.8857142857142857\ntulcan\t1.8715046604527297\nibarra\t1.868943606036537\ntisaleo\t1.8484848484848484\ncatamayo\t1.8478964401294498\nloja\t1.8457471621831751\nbaños de agua santa\t1.8434782608695652\npuebloviejo\t1.826086956521739\npuerto baquerizo moreno\t1.8214285714285714\ncelica\t1.816326530612245\notavalo\t1.813443072702332\nzumba\t1.8129032258064517\ncotacachi\t1.808\nsalitre\t1.7739130434782608\nvinces\t1.729559748427673\ncaluma\t1.7272727272727273\npablo sexto\t1.7142857142857142\nsan lorenzo\t1.7027863777089782\nmuisne\t1.6741071428571428\nquevedo\t1.6597051597051597\npelileo\t1.6517857142857142\nzaruma\t1.6470588235294117\npichincha\t1.6363636363636365\nzapotillo\t1.631578947368421\nlimon indanza\t1.627906976744186\nsangolquí\t1.6206896551724137\ncuenca\t1.6135139416983524\nisidro ayora\t1.6111111111111112\npatate\t1.608695652173913\nel empalme\t1.6027397260273972\nsanta isabel\t1.5922330097087378\ngualaquiza\t1.5833333333333333\nvaldez\t1.565217391304348\ngeneral antonio elizalde\t1.55\nel carmen\t1.5471698113207548\ncolimes\t1.5454545454545454\nantonio ante\t1.5444839857651245\ncañar\t1.5371024734982333\natacames\t1.5151515151515151\nsantiago\t1.5051546391752577\nsanta rosa\t1.503006012024048\nla victoria\t1.5\nquinsaloma\t1.5\ngualaceo\t1.4964028776978417\nsamborondon\t1.4707602339181287\nflavio alfaro\t1.45\nmarcabelí\t1.434782608695652\nbuena fe\t1.4242424242424243\nsalcedo\t1.400990099009901\npalora\t1.4\nmachachi\t1.3953488372093024\nsigchos\t1.3927893738140418\npuerto ayora\t1.3835616438356164\npallatanga\t1.380952380952381\nnabón\t1.3670886075949367\nsigsig\t1.3623188405797102\nsan vicente\t1.3571428571428572\ntaisha\t1.3452115812917596\nla concordia\t1.345132743362832\nquero\t1.33\ncolta\t1.3269230769230769\npuyango\t1.3217391304347825\nrioverde\t1.318918918918919\ncariamanga\t1.3141361256544504\nespindola\t1.3055555555555556\nsozoranga\t1.3043478260869565\nalausí\t1.2944162436548223\noña\t1.2857142857142858\npimampiro\t1.2857142857142858\ncumandá\t1.2741935483870968\nolmedo\t1.2608695652173914\npindal\t1.2592592592592593\nmira\t1.2575757575757576\ncatacocha\t1.252199413489736\nmoraspungo\t1.25\nmacará\t1.2153846153846153\nayapamba\t1.2083333333333333\npuerto quito\t1.201834862385321\nsan fernando\t1.2\npangua\t1.1991525423728813\nsaraguro\t1.1942148760330578\ngirón\t1.1935483870967742\nbalsas\t1.1886792452830188\nhuaca\t1.1818181818181819\nsan gabriel\t1.1714285714285715\nsuscal\t1.1666666666666667\npedro vicente maldonado\t1.1666666666666667\nquilanga\t1.1666666666666667\nportovelo\t1.15\nmocha\t1.131578947368421\nguano\t1.1308411214953271\nmontalvo\t1.1071428571428572\npalestina\t1.1\ndéleg\t1.09375\ngonzanama\t1.087719298245614\npuerto villamil\t1.0588235294117647\npenipe\t1.051948051948052\nchunchi\t1.0389610389610389\nsan jacinto de yaguachi\t1.0140845070422535\nlomas de sargentillo\t1.0\nsimón bolívar\t1.0\nel pan\t1.0\nchordeleg\t1.0\nguachapala\t1.0\nchilla\t1.0\nmarcelino maridueña\t1.0\n"
+          },
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mdfJoin\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [id_oferta_laboral: int, cargo: string ... 15 more fields]\n\u001b[1m\u001b[34mdfFiltrado\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.Dataset[org.apache.spark.sql.Row]\u001b[0m = [id_oferta_laboral: int, cargo: string ... 15 more fields]\n\u001b[1m\u001b[34mresultado1\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.Dataset[org.apache.spark.sql.Row]\u001b[0m = [ciudad: string, promedio_plazas: double]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://192.168.1.10:4040/jobs/job?id=20",
+              "$$hashKey": "object:7930"
+            },
+            {
+              "jobUrl": "http://192.168.1.10:4040/jobs/job?id=21",
+              "$$hashKey": "object:7931"
+            },
+            {
+              "jobUrl": "http://192.168.1.10:4040/jobs/job?id=22",
+              "$$hashKey": "object:7932"
+            },
+            {
+              "jobUrl": "http://192.168.1.10:4040/jobs/job?id=23",
+              "$$hashKey": "object:7933"
+            },
+            {
+              "jobUrl": "http://192.168.1.10:4040/jobs/job?id=24",
+              "$$hashKey": "object:7934"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1753463776709_576590268",
+      "id": "paragraph_1753200049536_1017205454",
+      "dateCreated": "2025-07-25T12:16:16-0500",
+      "status": "FINISHED",
+      "$$hashKey": "object:2684",
+      "dateFinished": "2025-07-25T12:27:42-0500",
+      "dateStarted": "2025-07-25T12:27:41-0500"
+    },
+    {
+      "text": "%md\n# 2. ¿Cuáles son las 10 ciudades con más ofertas sin experiencia?",
+      "user": "anonymous",
+      "dateUpdated": "2025-07-25T12:31:13-0500",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<h1>2. ¿Cuáles son las 10 ciudades con más ofertas sin experiencia?</h1>\n\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1753463776711_640529647",
+      "id": "paragraph_1753200089946_1204423932",
+      "dateCreated": "2025-07-25T12:16:16-0500",
+      "status": "FINISHED",
+      "$$hashKey": "object:2687",
+      "dateFinished": "2025-07-25T12:31:13-0500",
+      "dateStarted": "2025-07-25T12:31:13-0500"
+    },
+    {
+      "text": "val dfJoin = df\n  .join(dfRequisitos, df(\"idRe\") === dfRequisitos(\"id\"))\n  .join(dfLocalizacion, df(\"idLo\") === dfLocalizacion(\"id\"))\n\nval sinExperiencia = dfJoin.filter(lower(col(\"experiencia\")) === \"sin experiencia\")\n\nval resultado2 = sinExperiencia.groupBy(\"ciudad\")\n  .agg(count(\"id_oferta_laboral\").alias(\"total_ofertas_sin_experiencia\"))\n  .orderBy(desc(\"total_ofertas_sin_experiencia\"))\n  .limit(10)\n  \n",
+      "user": "anonymous",
+      "dateUpdated": "2025-07-25T12:39:48-0500",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "editorHide": false,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "pieChart",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "ciudad": "string",
+                      "total_ofertas_sin_experiencia": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mdfJoin\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [id_oferta_laboral: int, cargo: string ... 20 more fields]\n\u001b[1m\u001b[34msinExperiencia\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.Dataset[org.apache.spark.sql.Row]\u001b[0m = [id_oferta_laboral: int, cargo: string ... 20 more fields]\n\u001b[1m\u001b[34mresultado2\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.Dataset[org.apache.spark.sql.Row]\u001b[0m = [ciudad: string, total_ofertas_sin_experiencia: bigint]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1753463776711_15334745",
+      "id": "paragraph_1753200510221_853339121",
+      "dateCreated": "2025-07-25T12:16:16-0500",
+      "status": "FINISHED",
+      "$$hashKey": "object:2688",
+      "dateFinished": "2025-07-25T12:39:49-0500",
+      "dateStarted": "2025-07-25T12:39:48-0500"
+    },
+    {
+      "user": "anonymous",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "pieChart",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "ciudad": "string",
+                      "total_ofertas_sin_experiencia": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "ciudad",
+                  "index": 0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "total_ofertas_sin_experiencia",
+                  "index": 1,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://192.168.1.10:4040/jobs/job?id=30",
+              "$$hashKey": "object:9386"
+            },
+            {
+              "jobUrl": "http://192.168.1.10:4040/jobs/job?id=31",
+              "$$hashKey": "object:9387"
+            },
+            {
+              "jobUrl": "http://192.168.1.10:4040/jobs/job?id=32",
+              "$$hashKey": "object:9388"
+            },
+            {
+              "jobUrl": "http://192.168.1.10:4040/jobs/job?id=33",
+              "$$hashKey": "object:9389"
+            },
+            {
+              "jobUrl": "http://192.168.1.10:4040/jobs/job?id=34",
+              "$$hashKey": "object:9390"
+            },
+            {
+              "jobUrl": "http://192.168.1.10:4040/jobs/job?id=35",
+              "$$hashKey": "object:9391"
+            },
+            {
+              "jobUrl": "http://192.168.1.10:4040/jobs/job?id=36",
+              "$$hashKey": "object:9392"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1753465191568_1349892357",
+      "id": "paragraph_1753465191568_1349892357",
+      "dateCreated": "2025-07-25T12:39:51-0500",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:8476",
+      "text": "  z.show(resultado2)",
+      "dateUpdated": "2025-07-25T12:39:59-0500",
+      "dateFinished": "2025-07-25T12:39:55-0500",
+      "dateStarted": "2025-07-25T12:39:54-0500",
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "ciudad\ttotal_ofertas_sin_experiencia\nquito\t3238\npuerto francisco de orellana\t1427\nguayaquil\t1259\ncuenca\t835\nnueva loja\t490\nmachala\t431\nmacas\t396\nzamora\t389\npuyo\t317\nel pangui\t272\n"
+          }
+        ]
+      }
+    },
+    {
+      "text": "%md\n# 3. ¿Cuántas ofertas laborales fueron publicadas por provincia en un rango de fechas específico ?",
+      "user": "anonymous",
+      "dateUpdated": "2025-07-25T12:16:16-0500",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<h1>3. ¿Cuántas ofertas laborales fueron publicadas por provincia en un rango de fechas específico ?</h1>\n\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1753463776712_103823306",
+      "id": "paragraph_1753200693102_698252523",
+      "dateCreated": "2025-07-25T12:16:16-0500",
+      "status": "READY",
+      "$$hashKey": "object:2691"
+    },
+    {
+      "text": "val dfOfertasConFecha = df.withColumn(\"fechaPublicadoDate\", to_date(col(\"fechaPublicado\"), \"yyyy-MM-dd\"))\n\nval dfFiltrado = dfOfertasConFecha.filter(\n  col(\"fechaPublicadoDate\").between(\"2013-01-01\", \"2019-12-31\")\n)\n\nval dfJoin = dfFiltrado.join(dfLocalizacion, dfFiltrado(\"idLo\") === dfLocalizacion(\"id\"))\n\nval resultado3 = dfJoin.groupBy(\"provincia\")\n  .agg(count(\"id_oferta_laboral\").alias(\"total_ofertas_publicadas\"))\n  .orderBy(desc(\"total_ofertas_publicadas\"))\n  \n  z.show(resultado3)",
+      "user": "anonymous",
+      "dateUpdated": "2025-07-25T12:16:16-0500",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "stackedAreaChart",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "provincia": "string",
+                      "total_ofertas_publicadas": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "stackedAreaChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "provincia",
+                  "index": 0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "total_ofertas_publicadas",
+                  "index": 1,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "provincia\ttotal_ofertas_publicadas\npichincha\t58217\nguayas\t25231\nazuay\t14194\norellana\t11014\nloja\t8264\nsucumbíos\t7810\ntungurahua\t7129\nel oro\t6611\nmanabí\t6372\nimbabura\t5603\nesmeraldas\t4585\nsanto domingo de los tsáchilas\t4132\ncotopaxi\t3831\nnapo\t3731\nmorona santiago\t2531\nChimborazo\t2370\nlos ríos\t2220\nsanta elena\t2019\ncarchi\t1941\nzamora chinchipe\t1879\npastaza\t1681\nZamora Chinchipe\t981\nCañar\t891\nchimborazo\t764\ncañar\t754\nbolívar\t632\nSucumbíos\t337\ngalápagos\t181\nPastaza\t168\nLoja\t110\nPichincha\t66\n"
+          },
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mdfOfertasConFecha\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [id_oferta_laboral: int, cargo: string ... 10 more fields]\n\u001b[1m\u001b[34mdfFiltrado\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.Dataset[org.apache.spark.sql.Row]\u001b[0m = [id_oferta_laboral: int, cargo: string ... 10 more fields]\n\u001b[1m\u001b[34mdfJoin\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [id_oferta_laboral: int, cargo: string ... 14 more fields]\n\u001b[1m\u001b[34mresultado3\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.Dataset[org.apache.spark.sql.Row]\u001b[0m = [provincia: string, total_ofertas_publicadas: bigint]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1753463776712_208721084",
+      "id": "paragraph_1753200780611_663608068",
+      "dateCreated": "2025-07-25T12:16:16-0500",
+      "status": "READY",
+      "$$hashKey": "object:2692"
+    },
+    {
+      "text": "%md\n# 4. ¿Cuáles son los 5 sectores ocupacionales con mayor número de ofertas para profesionales con “tercer nivel” de instrucción?\n",
+      "user": "anonymous",
+      "dateUpdated": "2025-07-25T12:16:16-0500",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<h1>4. ¿Cuáles son los 5 sectores ocupacionales con mayor número de ofertas para profesionales con “tercer nivel” de instrucción?</h1>\n\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1753463776713_928420270",
+      "id": "paragraph_1753200954374_760388548",
+      "dateCreated": "2025-07-25T12:16:16-0500",
+      "status": "READY",
+      "$$hashKey": "object:2695"
+    },
+    {
+      "text": "val dfJoin = df.join(dfRequisitos, df(\"idRe\") === dfRequisitos(\"id\"))\n\nval dfFiltrado = dfJoin.filter(lower(col(\"nivelInstruccion\")) === \"tercer nivel\")\n\nval resultado4 = dfFiltrado.groupBy(\"areaEstudios\")\n  .agg(count(\"id_oferta_laboral\").alias(\"total_ofertas\"))\n  .orderBy(desc(\"total_ofertas\"))\n  .limit(5)\n  \n  z.show(resultado4)",
+      "user": "anonymous",
+      "dateUpdated": "2025-07-25T12:40:29-0500",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "lineChart",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "areaEstudios": "string",
+                      "total_ofertas": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "stackedAreaChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "lineChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "areaEstudios",
+                  "index": 0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "total_ofertas",
+                  "index": 1,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "areaEstudios\ttotal_ofertas\nmedicina/salud\t13983\nadministración/oficina\t12119\ningeniería/técnico\t10534\neconomía/contabilidad\t8522\neducación/universidad\t4404\n"
+          },
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mdfJoin\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [id_oferta_laboral: int, cargo: string ... 15 more fields]\n\u001b[1m\u001b[34mdfFiltrado\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.Dataset[org.apache.spark.sql.Row]\u001b[0m = [id_oferta_laboral: int, cargo: string ... 15 more fields]\n\u001b[1m\u001b[34mresultado4\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.Dataset[org.apache.spark.sql.Row]\u001b[0m = [areaEstudios: string, total_ofertas: bigint]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://192.168.1.10:4040/jobs/job?id=37",
+              "$$hashKey": "object:9638"
+            },
+            {
+              "jobUrl": "http://192.168.1.10:4040/jobs/job?id=38",
+              "$$hashKey": "object:9639"
+            },
+            {
+              "jobUrl": "http://192.168.1.10:4040/jobs/job?id=39",
+              "$$hashKey": "object:9640"
+            },
+            {
+              "jobUrl": "http://192.168.1.10:4040/jobs/job?id=40",
+              "$$hashKey": "object:9641"
+            },
+            {
+              "jobUrl": "http://192.168.1.10:4040/jobs/job?id=41",
+              "$$hashKey": "object:9642"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1753463776714_706498351",
+      "id": "paragraph_1753200997817_1709130769",
+      "dateCreated": "2025-07-25T12:16:16-0500",
+      "status": "FINISHED",
+      "$$hashKey": "object:2696",
+      "dateFinished": "2025-07-25T12:40:30-0500",
+      "dateStarted": "2025-07-25T12:40:29-0500"
+    },
+    {
+      "text": "%md\n# 5. ¿Cual es la region que mas solicita Servicios profecionales?",
+      "user": "anonymous",
+      "dateUpdated": "2025-07-25T12:16:16-0500",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<h1>5. ¿Cual es la region que mas solicita Servicios profecionales?</h1>\n\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1753463776715_309399472",
+      "id": "paragraph_1753210054904_1296450160",
+      "dateCreated": "2025-07-25T12:16:16-0500",
+      "status": "READY",
+      "$$hashKey": "object:2699"
+    },
+    {
+      "text": "\nimport org.apache.spark.sql.functions._\n\n// Unir tablas\nval dff = df\n  .join(dfRequisitos, df(\"idRe\") === dfRequisitos(\"id\"))\n  .join(dfLocalizacion, df(\"idLo\") === dfLocalizacion(\"id\"))\n\n// Filtrar solo Servicio profesional\nval filtrado = dff.filter(col(\"tipo_contrato\") === \"Servicios Profesionales\")\n\n// Contar total ofertas por region\nval conteo = filtrado.groupBy(\"region\")\n  .agg(count(\"id_oferta_laboral\").alias(\"total_ofertas\"))\n\n// Ordenar desc para obtener la región que más solicita\nval resultado5 = conteo.orderBy(desc(\"total_ofertas\"))\n\nz.show(resultado5)\n\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2025-07-25T12:40:54-0500",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "pieChart",
+              "height": 379.933,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "region": "string",
+                      "areaEstudios": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "lineChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "stackedAreaChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "pieChart": {}
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "region",
+                  "index": 0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "total_ofertas",
+                  "index": 1,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          },
+          "1": {
+            "graph": {
+              "mode": "table",
+              "height": 87.75,
+              "optionOpen": false
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "region\ttotal_ofertas\nAmazonía\t12444\nSierra\t7394\nCosta\t4807\nInsular\t13\n"
+          },
+          {
+            "type": "TEXT",
+            "data": "import org.apache.spark.sql.functions._\n\u001b[1m\u001b[34mdff\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [id_oferta_laboral: int, cargo: string ... 20 more fields]\n\u001b[1m\u001b[34mfiltrado\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.Dataset[org.apache.spark.sql.Row]\u001b[0m = [id_oferta_laboral: int, cargo: string ... 20 more fields]\n\u001b[1m\u001b[34mconteo\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [region: string, total_ofertas: bigint]\n\u001b[1m\u001b[34mresultado5\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.Dataset[org.apache.spark.sql.Row]\u001b[0m = [region: string, total_ofertas: bigint]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://192.168.1.10:4040/jobs/job?id=42",
+              "$$hashKey": "object:9998"
+            },
+            {
+              "jobUrl": "http://192.168.1.10:4040/jobs/job?id=43",
+              "$$hashKey": "object:9999"
+            },
+            {
+              "jobUrl": "http://192.168.1.10:4040/jobs/job?id=44",
+              "$$hashKey": "object:10000"
+            },
+            {
+              "jobUrl": "http://192.168.1.10:4040/jobs/job?id=45",
+              "$$hashKey": "object:10001"
+            },
+            {
+              "jobUrl": "http://192.168.1.10:4040/jobs/job?id=46",
+              "$$hashKey": "object:10002"
+            },
+            {
+              "jobUrl": "http://192.168.1.10:4040/jobs/job?id=47",
+              "$$hashKey": "object:10003"
+            },
+            {
+              "jobUrl": "http://192.168.1.10:4040/jobs/job?id=48",
+              "$$hashKey": "object:10004"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1753463776716_769057498",
+      "id": "paragraph_1753221457944_1324553364",
+      "dateCreated": "2025-07-25T12:16:16-0500",
+      "status": "FINISHED",
+      "$$hashKey": "object:2700",
+      "dateFinished": "2025-07-25T12:40:55-0500",
+      "dateStarted": "2025-07-25T12:40:54-0500"
+    }
+  ],
+  "name": "ProyectoBimestral1",
+  "id": "2M3NFREKU",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.11.1",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false,
+    "looknfeel": "default",
+    "personalizedMode": "false"
+  },
+  "info": {},
+  "path": "/ProyectoBimestral1"
+}
